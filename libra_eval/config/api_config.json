@@ -1,0 +1,6 @@
+{
+    "OPENAI_API_KEY": "",
+    "LIBRAI_API_KEY": "",
+    "NEXT_API_KEY":"",
+    "NEXT_BASE_URL": "https://api.openai-next.com/v1"
+}

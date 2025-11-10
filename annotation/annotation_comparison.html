@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annotation Inconsistency Comparison</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .controls {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        .filter-section {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        select, input {
+            padding: 5px;
+            margin-right: 15px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1976d2;
+        }
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+        }
+        .disagreement-item {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            background: white;
+        }
+        .disagreement-header {
+            background: #f8f9fa;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+        }
+        .disagreement-header:hover {
+            background: #e9ecef;
+        }
+        .disagreement-content {
+            padding: 15px;
+            display: none;
+        }
+        .disagreement-content.expanded {
+            display: block;
+        }
+        .annotations {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .annotator {
+            flex: 1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .annotator h4 {
+            margin: 0 0 5px 0;
+            color: #333;
+        }
+        .jinghao { background: #ffebee; }
+        .rui { background: #e8f5e8; }
+        .kaiyang { background: #fff3e0; }
+        .classification {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .STRONG_MATCH { color: #2e7d32; }
+        .POTENTIAL_MATCH { color: #f57c00; }
+        .NOT_MATCH { color: #d32f2f; }
+        .job-info, .candidate-info {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        .job-info h3, .candidate-info h3 {
+            margin: 0 0 10px 0;
+            color: #1976d2;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        .error {
+            color: #d32f2f;
+            background: #ffebee;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .agreement-type {
+            font-size: 12px;
+            padding: 3px 8px;
+            border-radius: 12px;
+            color: white;
+            margin-left: 10px;
+        }
+        .complete-disagreement { background: #d32f2f; }
+        .partial-disagreement { background: #f57c00; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Annotation Inconsistency Comparison Tool</h1>
+        
+        <div class="controls">
+            <div class="filter-section">
+                <label for="disagreementFilter">Filter by disagreement type:</label>
+                <select id="disagreementFilter">
+                    <option value="all">All disagreements</option>
+                    <option value="complete">Complete disagreement (all 3 different)</option>
+                    <option value="partial">Partial disagreement (2 vs 1)</option>
+                </select>
+                
+                <label for="searchJob">Search job title:</label>
+                <input type="text" id="searchJob" placeholder="Enter job title...">
+                
+                <label for="searchProfile">Search profile ID:</label>
+                <input type="text" id="searchProfile" placeholder="Enter profile ID...">
+            </div>
+        </div>
+        
+        <div class="stats" id="stats">
+            <!-- Stats will be populated by JavaScript -->
+        </div>
+        
+        <div id="loading" class="loading">Loading annotation data...</div>
+        <div id="error" class="error" style="display: none;"></div>
+        
+        <div id="disagreements">
+            <!-- Disagreements will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Global variables to store data
+        let annotationData = {};
+        let jobData = {};
+        let candidateData = {};
+        let disagreements = [];
+
+        // Load all data files
+        async function loadData() {
+            try {
+                // Load annotation files
+                const [jinghaoResponse, ruiResponse, kaiyangResponse] = await Promise.all([
+                    fetch('annotation/job_candidate_classification_human_20250719T181332_jinghao.json'),
+                    fetch('annotation/job_candidate_classification_human_20250721T132418_rui.json'),
+                    fetch('annotation/job_candidate_classification_human_20250724T095134_kaiyang.json')
+                ]);
+
+                if (!jinghaoResponse.ok || !ruiResponse.ok || !kaiyangResponse.ok) {
+                    throw new Error('Failed to load annotation files');
+                }
+
+                annotationData = {
+                    jinghao: await jinghaoResponse.json(),
+                    rui: await ruiResponse.json(),
+                    kaiyang: await kaiyangResponse.json()
+                };
+
+                // Load job and candidate data
+                const [jobResponse, candidateResponse] = await Promise.all([
+                    fetch('datasets/Linkedin job listings information.json'),
+                    fetch('datasets/LinkedIn people profiles_verified_company.json')
+                ]);
+
+                if (jobResponse.ok) {
+                    const jobs = await jobResponse.json();
+                    jobData = {};
+                    jobs.forEach(job => {
+                        jobData[job.job_posting_id] = job;
+                    });
+                }
+
+                if (candidateResponse.ok) {
+                    const candidates = await candidateResponse.json();
+                    candidateData = {};
+                    candidates.forEach(candidate => {
+                        candidateData[candidate.linkedin_num_id] = candidate;
+                    });
+                }
+
+                // Process disagreements
+                processDisagreements();
+                updateStats();
+                displayDisagreements();
+                
+                document.getElementById('loading').style.display = 'none';
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('error').textContent = 'Error loading data: ' + error.message;
+            }
+        }
+
+        // Process disagreements based on the analysis script logic
+        function processDisagreements() {
+            disagreements = [];
+            
+            // Get common job IDs across all three annotators
+            const jobs1 = new Set(Object.keys(annotationData.jinghao.classifications));
+            const jobs2 = new Set(Object.keys(annotationData.rui.classifications));
+            const jobs3 = new Set(Object.keys(annotationData.kaiyang.classifications));
+            
+            const commonJobs = Array.from(jobs1).filter(job => jobs2.has(job) && jobs3.has(job));
+            
+            commonJobs.forEach(jobId => {
+                const profiles1 = {};
+                const profiles2 = {};
+                const profiles3 = {};
+                
+                // Extract profile classifications for each annotator
+                annotationData.jinghao.classifications[jobId].applicants.forEach(app => {
+                    profiles1[app.profile_id] = app.classification;
+                });
+                annotationData.rui.classifications[jobId].applicants.forEach(app => {
+                    profiles2[app.profile_id] = app.classification;
+                });
+                annotationData.kaiyang.classifications[jobId].applicants.forEach(app => {
+                    profiles3[app.profile_id] = app.classification;
+                });
+                
+                // Find common profiles
+                const commonProfiles = Object.keys(profiles1).filter(
+                    profileId => profiles2.hasOwnProperty(profileId) && profiles3.hasOwnProperty(profileId)
+                );
+                
+                commonProfiles.forEach(profileId => {
+                    const annotations = [
+                        profiles1[profileId],
+                        profiles2[profileId],
+                        profiles3[profileId]
+                    ];
+                    
+                    // Check for disagreement
+                    const uniqueAnnotations = new Set(annotations);
+                    if (uniqueAnnotations.size > 1) {
+                        disagreements.push({
+                            jobId: jobId,
+                            profileId: profileId,
+                            annotations: {
+                                jinghao: annotations[0],
+                                rui: annotations[1],
+                                kaiyang: annotations[2]
+                            },
+                            disagreementType: uniqueAnnotations.size === 3 ? 'complete' : 'partial',
+                            jobInfo: annotationData.jinghao.classifications[jobId].job_info
+                        });
+                    }
+                });
+            });
+        }
+
+        // Update statistics display
+        function updateStats() {
+            const totalDisagreements = disagreements.length;
+            const completeDisagreements = disagreements.filter(d => d.disagreementType === 'complete').length;
+            const partialDisagreements = disagreements.filter(d => d.disagreementType === 'partial').length;
+            
+            const statsHtml = `
+                <div class="stat-card">
+                    <div class="stat-number">${totalDisagreements}</div>
+                    <div class="stat-label">Total Disagreements</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${completeDisagreements}</div>
+                    <div class="stat-label">Complete Disagreements</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${partialDisagreements}</div>
+                    <div class="stat-label">Partial Disagreements</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${((completeDisagreements + partialDisagreements) / Math.max(totalDisagreements, 1) * 100).toFixed(1)}%</div>
+                    <div class="stat-label">Disagreement Rate</div>
+                </div>
+            `;
+            
+            document.getElementById('stats').innerHTML = statsHtml;
+        }
+
+        // Display disagreements with filtering
+        function displayDisagreements() {
+            const filter = document.getElementById('disagreementFilter').value;
+            const jobSearch = document.getElementById('searchJob').value.toLowerCase();
+            const profileSearch = document.getElementById('searchProfile').value;
+            
+            let filteredDisagreements = disagreements;
+            
+            // Apply filters
+            if (filter !== 'all') {
+                filteredDisagreements = filteredDisagreements.filter(d => d.disagreementType === filter);
+            }
+            
+            if (jobSearch) {
+                filteredDisagreements = filteredDisagreements.filter(d => 
+                    d.jobInfo.job_title.toLowerCase().includes(jobSearch)
+                );
+            }
+            
+            if (profileSearch) {
+                filteredDisagreements = filteredDisagreements.filter(d => 
+                    d.profileId.includes(profileSearch)
+                );
+            }
+            
+            const disagreementsHtml = filteredDisagreements.map(disagreement => {
+                const job = jobData[disagreement.jobId] || {};
+                const candidate = candidateData[disagreement.profileId] || {};
+                
+                return `
+                    <div class="disagreement-item">
+                        <div class="disagreement-header" onclick="toggleDisagreement(this)">
+                            <strong>Job:</strong> ${disagreement.jobInfo.job_title}
+                            <span class="agreement-type ${disagreement.disagreementType}-disagreement">
+                                ${disagreement.disagreementType.toUpperCase()}
+                            </span>
+                            <br>
+                            <strong>Profile ID:</strong> ${disagreement.profileId}
+                            <br>
+                            <small>Click to expand details</small>
+                        </div>
+                        <div class="disagreement-content">
+                            <div class="annotations">
+                                <div class="annotator jinghao">
+                                    <h4>Jinghao</h4>
+                                    <div class="classification ${disagreement.annotations.jinghao}">
+                                        ${disagreement.annotations.jinghao}
+                                    </div>
+                                </div>
+                                <div class="annotator rui">
+                                    <h4>Rui</h4>
+                                    <div class="classification ${disagreement.annotations.rui}">
+                                        ${disagreement.annotations.rui}
+                                    </div>
+                                </div>
+                                <div class="annotator kaiyang">
+                                    <h4>Kaiyang</h4>
+                                    <div class="classification ${disagreement.annotations.kaiyang}">
+                                        ${disagreement.annotations.kaiyang}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="job-info">
+                                <h3>Job Information</h3>
+                                <p><strong>Title:</strong> ${disagreement.jobInfo.job_title}</p>
+                                <p><strong>Company:</strong> ${disagreement.jobInfo.company_name}</p>
+                                <p><strong>Location:</strong> ${disagreement.jobInfo.job_location}</p>
+                                <p><strong>Seniority:</strong> ${disagreement.jobInfo.job_seniority_level}</p>
+                                <p><strong>Function:</strong> ${disagreement.jobInfo.job_function}</p>
+                                <p><strong>Industries:</strong> ${disagreement.jobInfo.job_industries}</p>
+                                ${job.job_summary ? `<p><strong>Summary:</strong> ${job.job_summary}</p>` : ''}
+                            </div>
+                            
+                            <div class="candidate-info">
+                                <h3>Candidate Information</h3>
+                                ${candidate.name ? `<p><strong>Name:</strong> ${candidate.name}</p>` : ''}
+                                ${candidate.position ? `<p><strong>Position:</strong> ${candidate.position}</p>` : ''}
+                                ${candidate.city ? `<p><strong>Location:</strong> ${candidate.city}</p>` : ''}
+                                ${candidate.about ? `<p><strong>About:</strong> ${candidate.about}</p>` : ''}
+                                ${candidate.connections ? `<p><strong>Connections:</strong> ${candidate.connections}</p>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            document.getElementById('disagreements').innerHTML = disagreementsHtml;
+        }
+
+        // Toggle disagreement details
+        function toggleDisagreement(header) {
+            const content = header.nextElementSibling;
+            content.classList.toggle('expanded');
+        }
+
+        // Event listeners
+        document.getElementById('disagreementFilter').addEventListener('change', displayDisagreements);
+        document.getElementById('searchJob').addEventListener('input', displayDisagreements);
+        document.getElementById('searchProfile').addEventListener('input', displayDisagreements);
+
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', loadData);
+    </script>
+</body>
+</html>

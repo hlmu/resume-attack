@@ -1,0 +1,4 @@
+Model,Defense_Type,instruction,invisible_experience,invisible_keywords,job_manipulation
+Qwen_Qwen3-8B,Prompt-based,30.62/18.84/11.77,41.14/21.00/20.14,16.31/7.94/8.37,80.89/80.67/0.22
+Qwen_Qwen3-8B,SFT,30.62/15.98/14.63,41.14/24.51/16.63,16.31/12.26/4.05,80.89/54.59/26.30
+Qwen_Qwen3-8B,SFT+Prompt,30.62/9.13/21.49,41.14/7.02/34.13,16.31/6.64/9.67,80.89/41.09/39.79

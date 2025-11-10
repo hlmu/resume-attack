@@ -1,0 +1,20 @@
+\begin{table}[h]
+\centering
+\caption{Impact of Defense Mechanisms on Legitimate Candidates}
+\label{tab:utility_preservation}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Defense} & \textbf{Baseline} & \textbf{With Defense} & \textbf{FRR Increase} & \textbf{Utility} & \textbf{Downgrades} \\
+\textbf{Method} & \textbf{Accept (\%)} & \textbf{Accept (\%)} & \textbf{(\%)} & \textbf{Score (\%)} & \textbf{to NOT} \\
+\midrule
+Prompt Defense & 46.2% & 33.7% & 12.5% & 87.5% & 77 \\
+SFT Defense (LoRA) & 46.2% & 35.9% & 10.4% & 89.6% & 82 \\
+Combined Defense & 46.2% & 26.8% & 19.4% & 80.6% & 103 \\
+\bottomrule
+\end{tabular}
+\vspace{0.5em}
+\begin{flushleft}
+\footnotesize
+\textit{Note:} FRR = False Rejection Rate increase. Utility Score measures preservation of legitimate candidate classifications (100\% = perfect preservation). Downgrades show candidates moved from MATCH categories to NOT\_MATCH.
+\end{flushleft}
+\end{table}

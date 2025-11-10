@@ -1,0 +1,37 @@
+Job Category Distribution Analysis
+==================================
+
+Total number of jobs: 1000
+Number of unique categories: 14
+
+Category distribution:
+Technology & IT                242
+Media & Communications         125
+Finance & Business Services    115
+Education & Non-profit         111
+Engineering & Construction     98
+Healthcare & Life Sciences     94
+Other Services                 56
+Retail & Consumer Goods        33
+Staffing & HR                  33
+Legal                          23
+Government & Public Sector     20
+Real Estate                    19
+Transportation & Logistics     19
+Manufacturing                  12
+
+Category percentages:
+Technology & IT: 24.20%
+Media & Communications: 12.50%
+Finance & Business Services: 11.50%
+Education & Non-profit: 11.10%
+Engineering & Construction: 9.80%
+Healthcare & Life Sciences: 9.40%
+Other Services: 5.60%
+Retail & Consumer Goods: 3.30%
+Staffing & HR: 3.30%
+Legal: 2.30%
+Government & Public Sector: 2.00%
+Real Estate: 1.90%
+Transportation & Logistics: 1.90%
+Manufacturing: 1.20%

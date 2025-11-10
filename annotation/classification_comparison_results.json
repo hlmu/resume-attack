@@ -1,0 +1,487 @@
+{
+  "total_comparisons": 61,
+  "agreements": 32,
+  "disagreements": 29,
+  "overall_accuracy": 0.5245901639344263,
+  "confusion_matrix": {
+    "NOT_MATCH": {
+      "POTENTIAL_MATCH": 10,
+      "NOT_MATCH": 25,
+      "STRONG_MATCH": 4,
+      "NOT_DECIDED": 0
+    },
+    "POTENTIAL_MATCH": {
+      "STRONG_MATCH": 6,
+      "NOT_MATCH": 2,
+      "POTENTIAL_MATCH": 5,
+      "NOT_DECIDED": 0
+    },
+    "STRONG_MATCH": {
+      "NOT_MATCH": 3,
+      "STRONG_MATCH": 2,
+      "POTENTIAL_MATCH": 0,
+      "NOT_DECIDED": 0
+    },
+    "NOT_DECIDED": {
+      "NOT_MATCH": 2,
+      "POTENTIAL_MATCH": 2,
+      "NOT_DECIDED": 0,
+      "STRONG_MATCH": 0
+    }
+  },
+  "class_metrics": {
+    "POTENTIAL_MATCH": {
+      "precision": 0.29411764705882354,
+      "recall": 0.38461538461538464,
+      "f1_score": 0.33333333333333337,
+      "support": 13
+    },
+    "NOT_DECIDED": {
+      "precision": 0,
+      "recall": 0.0,
+      "f1_score": 0,
+      "support": 4
+    },
+    "NOT_MATCH": {
+      "precision": 0.78125,
+      "recall": 0.6410256410256411,
+      "f1_score": 0.7042253521126761,
+      "support": 39
+    },
+    "STRONG_MATCH": {
+      "precision": 0.16666666666666666,
+      "recall": 0.4,
+      "f1_score": 0.23529411764705882,
+      "support": 5
+    }
+  },
+  "detailed_comparisons": [
+    {
+      "job_id": "4205003479",
+      "profile_id": "210247735",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "POTENTIAL_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4210578765",
+      "profile_id": "66720604",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4208482507",
+      "profile_id": "53383534",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4210059190",
+      "profile_id": "30299468",
+      "human_classification": "POTENTIAL_MATCH",
+      "model_classification": "STRONG_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4208066499",
+      "profile_id": "131350799",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4205003479",
+      "profile_id": "483896244",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "POTENTIAL_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4209665967",
+      "profile_id": "10602648",
+      "human_classification": "POTENTIAL_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4210578765",
+      "profile_id": "428786235",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4207593818",
+      "profile_id": "308746061",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4205129691",
+      "profile_id": "322820632",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4210578765",
+      "profile_id": "176196052",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4208066499",
+      "profile_id": "221743863",
+      "human_classification": "STRONG_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4098214646",
+      "profile_id": "549043728",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4205129691",
+      "profile_id": "275775461",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "STRONG_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4208066499",
+      "profile_id": "93973369",
+      "human_classification": "NOT_DECIDED",
+      "model_classification": "NOT_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4207593818",
+      "profile_id": "113703325",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4205003479",
+      "profile_id": "479324378",
+      "human_classification": "POTENTIAL_MATCH",
+      "model_classification": "POTENTIAL_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4205003479",
+      "profile_id": "327717971",
+      "human_classification": "NOT_DECIDED",
+      "model_classification": "POTENTIAL_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4210059190",
+      "profile_id": "302223965",
+      "human_classification": "POTENTIAL_MATCH",
+      "model_classification": "STRONG_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4205003479",
+      "profile_id": "220793081",
+      "human_classification": "POTENTIAL_MATCH",
+      "model_classification": "STRONG_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4191847995",
+      "profile_id": "304382916",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "POTENTIAL_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4192070659",
+      "profile_id": "338866020",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4098214646",
+      "profile_id": "697561985",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4208808434",
+      "profile_id": "44454760",
+      "human_classification": "STRONG_MATCH",
+      "model_classification": "STRONG_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4187772893",
+      "profile_id": "283186197",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "POTENTIAL_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4098214646",
+      "profile_id": "336308190",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4209665967",
+      "profile_id": "35165176",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "POTENTIAL_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4098214646",
+      "profile_id": "789960352",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4191847995",
+      "profile_id": "268402492",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4195733188",
+      "profile_id": "248103923",
+      "human_classification": "POTENTIAL_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4195733188",
+      "profile_id": "27639320",
+      "human_classification": "POTENTIAL_MATCH",
+      "model_classification": "STRONG_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4208066499",
+      "profile_id": "697561985",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4209665967",
+      "profile_id": "354960532",
+      "human_classification": "POTENTIAL_MATCH",
+      "model_classification": "POTENTIAL_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4210578765",
+      "profile_id": "17933882",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4195733188",
+      "profile_id": "131350799",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "POTENTIAL_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4208066499",
+      "profile_id": "7138805",
+      "human_classification": "STRONG_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4195733188",
+      "profile_id": "560288979",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "POTENTIAL_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4207593818",
+      "profile_id": "512529064",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "POTENTIAL_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4210059190",
+      "profile_id": "86498233",
+      "human_classification": "POTENTIAL_MATCH",
+      "model_classification": "STRONG_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4195733188",
+      "profile_id": "93973369",
+      "human_classification": "NOT_DECIDED",
+      "model_classification": "NOT_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4208808434",
+      "profile_id": "520815335",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4187772893",
+      "profile_id": "750760980",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4192070659",
+      "profile_id": "415314218",
+      "human_classification": "NOT_DECIDED",
+      "model_classification": "POTENTIAL_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4209665967",
+      "profile_id": "221743863",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4209665967",
+      "profile_id": "355586663",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4210059190",
+      "profile_id": "47580528",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "POTENTIAL_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4208808434",
+      "profile_id": "84074846",
+      "human_classification": "STRONG_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4208808434",
+      "profile_id": "294597161",
+      "human_classification": "POTENTIAL_MATCH",
+      "model_classification": "POTENTIAL_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4210578765",
+      "profile_id": "324960708",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4098214646",
+      "profile_id": "163823261",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4208808434",
+      "profile_id": "572297546",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4207593818",
+      "profile_id": "43999243",
+      "human_classification": "STRONG_MATCH",
+      "model_classification": "STRONG_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4191847995",
+      "profile_id": "326541498",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "STRONG_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4210059190",
+      "profile_id": "48746445",
+      "human_classification": "POTENTIAL_MATCH",
+      "model_classification": "STRONG_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4192070659",
+      "profile_id": "343542907",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4192070659",
+      "profile_id": "18271757",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "POTENTIAL_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4191847995",
+      "profile_id": "165235947",
+      "human_classification": "POTENTIAL_MATCH",
+      "model_classification": "POTENTIAL_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4192070659",
+      "profile_id": "12585934",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "STRONG_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4187772893",
+      "profile_id": "462086922",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4191847995",
+      "profile_id": "212331021",
+      "human_classification": "NOT_MATCH",
+      "model_classification": "STRONG_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4210562100",
+      "profile_id": "415650026",
+      "human_classification": "POTENTIAL_MATCH",
+      "model_classification": "POTENTIAL_MATCH",
+      "agreement": true
+    }
+  ]
+}

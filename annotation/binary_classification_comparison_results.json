@@ -1,0 +1,415 @@
+{
+  "total_comparisons": 61,
+  "valid_comparisons": 57,
+  "not_decided_cases": 4,
+  "true_positives": 13,
+  "true_negatives": 25,
+  "false_positives": 14,
+  "false_negatives": 5,
+  "accuracy": 0.6666666666666666,
+  "precision": 0.48148148148148145,
+  "recall": 0.7222222222222222,
+  "f1_score": 0.5777777777777777,
+  "specificity": 0.6410256410256411,
+  "detailed_comparisons": [
+    {
+      "job_id": "4208066499",
+      "profile_id": "7138805",
+      "human_binary": "MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4210059190",
+      "profile_id": "86498233",
+      "human_binary": "MATCH",
+      "model_binary": "MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4191847995",
+      "profile_id": "326541498",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4187772893",
+      "profile_id": "462086922",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4208808434",
+      "profile_id": "84074846",
+      "human_binary": "MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4191847995",
+      "profile_id": "268402492",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4210059190",
+      "profile_id": "30299468",
+      "human_binary": "MATCH",
+      "model_binary": "MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4209665967",
+      "profile_id": "221743863",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4187772893",
+      "profile_id": "283186197",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4195733188",
+      "profile_id": "248103923",
+      "human_binary": "MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4210578765",
+      "profile_id": "17933882",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4209665967",
+      "profile_id": "10602648",
+      "human_binary": "MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4205129691",
+      "profile_id": "275775461",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4192070659",
+      "profile_id": "338866020",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4195733188",
+      "profile_id": "560288979",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4098214646",
+      "profile_id": "789960352",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4205003479",
+      "profile_id": "483896244",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4205003479",
+      "profile_id": "220793081",
+      "human_binary": "MATCH",
+      "model_binary": "MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4208066499",
+      "profile_id": "221743863",
+      "human_binary": "MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4209665967",
+      "profile_id": "355586663",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4098214646",
+      "profile_id": "549043728",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4209665967",
+      "profile_id": "354960532",
+      "human_binary": "MATCH",
+      "model_binary": "MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4195733188",
+      "profile_id": "27639320",
+      "human_binary": "MATCH",
+      "model_binary": "MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4208808434",
+      "profile_id": "294597161",
+      "human_binary": "MATCH",
+      "model_binary": "MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4192070659",
+      "profile_id": "12585934",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4205003479",
+      "profile_id": "210247735",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4208066499",
+      "profile_id": "131350799",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4208808434",
+      "profile_id": "572297546",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4207593818",
+      "profile_id": "113703325",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4210059190",
+      "profile_id": "47580528",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4210059190",
+      "profile_id": "48746445",
+      "human_binary": "MATCH",
+      "model_binary": "MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4191847995",
+      "profile_id": "304382916",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4210578765",
+      "profile_id": "428786235",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4210578765",
+      "profile_id": "324960708",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4210578765",
+      "profile_id": "176196052",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4207593818",
+      "profile_id": "308746061",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4098214646",
+      "profile_id": "697561985",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4098214646",
+      "profile_id": "336308190",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4208482507",
+      "profile_id": "53383534",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4208808434",
+      "profile_id": "520815335",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4207593818",
+      "profile_id": "512529064",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4208066499",
+      "profile_id": "697561985",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4187772893",
+      "profile_id": "750760980",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4098214646",
+      "profile_id": "163823261",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4208808434",
+      "profile_id": "44454760",
+      "human_binary": "MATCH",
+      "model_binary": "MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4191847995",
+      "profile_id": "165235947",
+      "human_binary": "MATCH",
+      "model_binary": "MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4210059190",
+      "profile_id": "302223965",
+      "human_binary": "MATCH",
+      "model_binary": "MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4210562100",
+      "profile_id": "415650026",
+      "human_binary": "MATCH",
+      "model_binary": "MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4205003479",
+      "profile_id": "479324378",
+      "human_binary": "MATCH",
+      "model_binary": "MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4207593818",
+      "profile_id": "43999243",
+      "human_binary": "MATCH",
+      "model_binary": "MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4191847995",
+      "profile_id": "212331021",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4192070659",
+      "profile_id": "18271757",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4209665967",
+      "profile_id": "35165176",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4192070659",
+      "profile_id": "343542907",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4210578765",
+      "profile_id": "66720604",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    },
+    {
+      "job_id": "4195733188",
+      "profile_id": "131350799",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "MATCH",
+      "agreement": false
+    },
+    {
+      "job_id": "4205129691",
+      "profile_id": "322820632",
+      "human_binary": "NOT_MATCH",
+      "model_binary": "NOT_MATCH",
+      "agreement": true
+    }
+  ]
+}

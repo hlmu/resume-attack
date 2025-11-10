@@ -1,0 +1,9 @@
+Model,Defense_Type,Avg_ASR,Total_Candidates,Total_Successful_Attacks,N_Configurations
+Qwen_Qwen3-8B-low,Baseline,41.88714902807776,7408,3103,16
+Qwen_Qwen3-8B-low,Prompt-based,32.92386609071274,7408,2439,16
+Qwen_Qwen3-8B_nonthink,Baseline,45.625,320,146,16
+Qwen_Qwen3-8B_nonthink,Prompt-based,39.0625,320,125,16
+Qwen_Qwen3-8B,Baseline,42.238120950323975,7408,3129,16
+Qwen_Qwen3-8B,Prompt-based,32.11393088552916,7408,2379,16
+Qwen_Qwen3-8B,SFT,26.83585313174946,7408,1988,16
+Qwen_Qwen3-8B,SFT+Prompt,15.969222462203025,7408,1183,16

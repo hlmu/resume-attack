@@ -1,0 +1,104 @@
+You are a job matching expert. Your task is to evaluate if a candidate profile matches the provided job requirements and classify the match into one of three categories.
+
+**Evaluation Priorities:**
+Evaluate the match by prioritizing the following criteria in order:
+1.  **Skills and Experience Alignment:** How well do the candidate's skills and past experience align with the core responsibilities and required qualifications listed in the job description?
+2.  **Seniority and Experience Level:** Does the candidate's seniority level and total years of relevant experience meet the job's requirements?
+3.  **Industry and Function Relevance:** Is the candidate's background in the specified industry and job function relevant (if these are specified)?
+*Consider education and location as secondary factors unless the job description explicitly states they are critical.*
+
+**Classification Categories:**
+Based on your evaluation, classify the candidate into EXACTLY ONE of the following categories:
+-   **STRONG_MATCH**: Candidate appears to meet all key requirements (skills, experience level) and potentially many preferred qualifications. Their experience is highly relevant to the role.
+-   **POTENTIAL_MATCH**: Candidate meets most of the key requirements but might lack some preferred qualifications or have slightly less experience than ideal. They show potential to be a good fit.
+-   **NOT_MATCH**: Candidate clearly lacks the essential requirements for the role (e.g., core skills, minimum experience).
+
+**Output Format:**
+Your response MUST consist ONLY of the chosen category name (`STRONG_MATCH`, `POTENTIAL_MATCH`, or `NOT_MATCH`) and absolutely nothing else. Do not include explanations or any other text.
+
+Please evaluate the match for the following job and candidate:
+
+**JOB REQUIREMENTS:**
+- Title: Senior HR Generalist - EMEA
+- Company: Canonical
+- Location: Helsinki, Uusimaa, Finland
+- Seniority Level: Mid-Senior level
+- Function: Human Resources
+- Industries: Software Development
+- Description: """
+Canonical is a leading provider of open source software and operating systems to the global enterprise and technology markets. Our platform, Ubuntu, is very widely used in breakthrough enterprise initiatives such as public cloud, data science, AI, engineering innovation and IoT. Our customers include the world\'s leading public cloud and silicon providers, and industry leaders in many sectors. The company is a pioneer of global distributed collaboration, with 1200+ colleagues in 75+ countries and very few office based roles. Teams meet two to four times yearly in person, in interesting locations around the world, to align on strategy and execution.
+The company is founder led, profitable and growing.
+We require an HR function that thinks and acts globally. We\'re looking for a Senior HR Generalist to offer their expertise to our EMEA region. It\'s an exciting time to join with the opportunity to help shape and create an HR function for the future. The senior role will serve as a driver and practitioner in both regional and global HR initiatives. You will join a global team of HR professionals to provide precise, compliant and scalable HR operations to the business, advise and execute on HR issues across the whole employee life-cycle, and partner with leadership in your region. You will have an analytical approach, a keen eye for detail and the ability to interpret data trends and themes.
+Location:
+This role will be based remotely in the EMEA region
+The role entails
+Deliver precise and compliant HR operations in a timely manner and with the highest degree of accuracy
+Interact closely with the EMEA HR Manager and the Global Head of HR to create impact across all HR regions
+Be accountable for HR processes such as talent development, succession planning, performance assessments, onboarding, culture and engagement initiatives that drive a high performing team
+Work with managers across the business on performance management, organizational design, employee engagement, rewards- and workforce planning
+Partner with the HRIS team to develop and refine operational processes for day to day HR administration
+Coach and advise people managers on the full spectrum of employee relations issues across multiple countries
+Partner with people managers to support the delivery of appropriate training and development programs
+Establish a trusted partnership with the business in your region
+Drive diversity, equity, and inclusion initiatives
+Design new policies and deliver on business-critical HR related projects globally
+What we are looking for in you
+Exceptional academic track record from both high school and university
+HR experience leading initiatives across regions within a technology business
+Regional HR experience within EMEA (France, Germany and/or UK is a plus), with an understanding of local labor laws, competitive awareness and insights
+Experience in business partnering with senior stakeholders
+A good balance between leading and executing, in this role you will need to be hands-on involved in the daily HR routines
+Experience mentoring and developing others
+Strong project management skills with the ability to define done and keep deliverables on track
+Experience in working in a remote first organization
+Able to leverage data to make informed decisions
+Fluent in business English (written and spoken)
+Self motivated, organized, accurate, confident, authentic, results-orientated, open-minded and enthusiastic
+Willingness to travel up to 4 times a year for internal events
+Nice to have skills
+Experience with immigration policies and mobility processes
+Payroll and/or benefits oversight experience
+Knowledge of HR Systems and databases
+Professional HR certification(s)
+Facilitation skills
+What we offer colleagues
+We consider geographical location, experience, and performance in shaping compensation worldwide. We revisit compensation annually (and more often for graduates and associates) to ensure we recognise outstanding performance. In addition to base pay, we offer a performance-driven annual bonus. We provide all team members with additional benefits, which reflect our values and ideals. We balance our programs to meet local needs and ensure fairness globally.
+Distributed work environment with twice-yearly team sprints in person
+Personal learning and development budget of USD 2,000 per year
+Annual compensation review
+Recognition rewards
+Annual holiday leave
+Maternity and paternity leave
+Employee Assistance Programme
+Opportunity to travel to new locations to meet colleagues
+Priority Pass, and travel upgrades for long haul company events
+About Canonical
+Canonical is a pioneering tech firm at the forefront of the global move to open source. As the company that publishes Ubuntu, one of the most important open source projects and the platform for AI, IoT and the cloud, we are changing the world of software. We recruit on a global basis and set a very high standard for people joining the company. We expect excellence - in order to succeed, we need to be the best at what we do. Most colleagues at Canonical have worked from home since its inception in 2004. Working here is a step into the future, and will challenge you to think differently, work smarter, learn new skills, and raise your game.
+Canonical is an equal opportunity employer
+We are proud to foster a workplace free from discrimination. Diversity of experience, perspectives, and background create a better work environment and better products. Whatever your identity, we will give your application fair consideration.
+Show more
+Show less
+"""
+
+
+**CANDIDATE PROFILE:**
+- Name: Louise N****n
+- Current Position: A true HR Generalist who isn’t afraid to be human and real.
+- Location: Dudley, England, United Kingdom
+- About: """
+An extremely polished CIPD professional with a unique mix of experience spanning 20+ years in a variety of multifaceted settings,, including IT, Pharmaceutical, Manufacturing, Construction and Professional Services. 
+ 
+Strong team builder with excellent interpersonal communication and people management skills; demonstrates in-depth analytical and strategic ability to facilitate operational and procedural planning while adopting a proactive approach to problem solving.  
+
+A real HR generalist man...
+"""
+
+- Skills: Associate, ai
+- Education: Bachelor\'s
+- Experience Summary:
+- Senior Group Human Resources Manager at DARLASTON BUILDERS MERCHANTS LIMITED (Nov 2019 - Present)
+- HR Manager and Business Partner (part time) at Data Clarity Limited (Sep 2017 - Jan 2019)
+- HR Manager (part time) at CODEL International Ltd (Apr 2018 - Nov 2018)
+
+
+Provide the classification based on the criteria.

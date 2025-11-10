@@ -1,0 +1,635 @@
+{
+  "summary": {
+    "total_jobs": 15,
+    "total_classifications": 61,
+    "match_distribution": {
+      "STRONG_MATCH": 6,
+      "POTENTIAL_MATCH": 12,
+      "NOT_MATCH": 43
+    }
+  },
+  "classifications": {
+    "4098214646": {
+      "job_info": {
+        "job_title": "Integral Project Manager - Mechatronics Systems",
+        "company_name": "Sioux Technologies",
+        "job_location": "Eindhoven, North Brabant, Netherlands",
+        "job_seniority_level": "Mid-Senior level",
+        "job_function": "Project Management and Information Technology",
+        "job_industries": "Industrial Machinery Manufacturing",
+        "job_id": "4098214646"
+      },
+      "applicants": [
+        {
+          "profile_id": "336308190",
+          "similarity_score": 0.6265236735343933,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "163823261",
+          "similarity_score": 0.6028041243553162,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "697561985",
+          "similarity_score": 0.5866761207580566,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "789960352",
+          "similarity_score": 0.5757104158401489,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "549043728",
+          "similarity_score": 0.5674662590026855,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        }
+      ]
+    },
+    "4187772893": {
+      "job_info": {
+        "job_title": "Backend Software Engineer, Global E-Commerce Logistics - USDS",
+        "company_name": "TikTok",
+        "job_location": "Seattle, WA",
+        "job_seniority_level": "Mid-Senior level",
+        "job_function": "Engineering and Information Technology",
+        "job_industries": "Entertainment Providers",
+        "job_id": "4187772893"
+      },
+      "applicants": [
+        {
+          "profile_id": "462086922",
+          "similarity_score": 0.6216063499450684,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "283186197",
+          "similarity_score": 0.5324351787567139,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "750760980",
+          "similarity_score": 0.5205939412117004,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        }
+      ]
+    },
+    "4191847995": {
+      "job_info": {
+        "job_title": "Associate Director, Procurement",
+        "company_name": "Sidley Austin LLP",
+        "job_location": "Chicago, IL",
+        "job_seniority_level": "Mid-Senior level",
+        "job_function": "Purchasing and Supply Chain",
+        "job_industries": "Law Practice",
+        "job_id": "4191847995"
+      },
+      "applicants": [
+        {
+          "profile_id": "268402492",
+          "similarity_score": 0.5888868570327759,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "304382916",
+          "similarity_score": 0.5876246690750122,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "326541498",
+          "similarity_score": 0.6138594150543213,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "165235947",
+          "similarity_score": 0.6019357442855835,
+          "classification": "POTENTIAL_MATCH",
+          "response_content": "Manual evaluation: POTENTIAL_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "212331021",
+          "similarity_score": 0.5856001377105713,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        }
+      ]
+    },
+    "4192070659": {
+      "job_info": {
+        "job_title": "Marketing Manager",
+        "company_name": "Carbon Equity",
+        "job_location": "Amsterdam, North Holland, Netherlands",
+        "job_seniority_level": "Mid-Senior level",
+        "job_function": "Marketing",
+        "job_industries": "Advertising Services",
+        "job_id": "4192070659"
+      },
+      "applicants": [
+        {
+          "profile_id": "415314218",
+          "similarity_score": 0.5662072896957397,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "18271757",
+          "similarity_score": 0.5268746614456177,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "12585934",
+          "similarity_score": 0.5256872177124023,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "338866020",
+          "similarity_score": 0.5222264528274536,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "343542907",
+          "similarity_score": 0.5213956832885742,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        }
+      ]
+    },
+    "4195733188": {
+      "job_info": {
+        "job_title": "Senior Project Manager",
+        "company_name": "Webs | HubSpot Consultancy Partner",
+        "job_location": "Eindhoven, North Brabant, Netherlands",
+        "job_seniority_level": "Mid-Senior level",
+        "job_function": "Project Management and Information Technology",
+        "job_industries": "IT Services and IT Consulting",
+        "job_id": "4195733188"
+      },
+      "applicants": [
+        {
+          "profile_id": "560288979",
+          "similarity_score": 0.6215711832046509,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "93973369",
+          "similarity_score": 0.6192861795425415,
+          "classification": "POTENTIAL_MATCH",
+          "response_content": "Manual evaluation: POTENTIAL_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "248103923",
+          "similarity_score": 0.6496682167053223,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "131350799",
+          "similarity_score": 0.6407915353775024,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "27639320",
+          "similarity_score": 0.6178388595581055,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        }
+      ]
+    },
+    "4205003479": {
+      "job_info": {
+        "job_title": "AI Engineer",
+        "company_name": "BankUnited",
+        "job_location": "Hialeah, FL",
+        "job_seniority_level": "Mid-Senior level",
+        "job_function": "Engineering and Information Technology",
+        "job_industries": "Banking",
+        "job_id": "4205003479"
+      },
+      "applicants": [
+        {
+          "profile_id": "327717971",
+          "similarity_score": 0.630603551864624,
+          "classification": "POTENTIAL_MATCH",
+          "response_content": "Manual evaluation: POTENTIAL_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "479324378",
+          "similarity_score": 0.5901595950126648,
+          "classification": "POTENTIAL_MATCH",
+          "response_content": "Manual evaluation: POTENTIAL_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "483896244",
+          "similarity_score": 0.5852906703948975,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "210247735",
+          "similarity_score": 0.5596736669540405,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "220793081",
+          "similarity_score": 0.5450984835624695,
+          "classification": "POTENTIAL_MATCH",
+          "response_content": "Manual evaluation: POTENTIAL_MATCH",
+          "think_content": ""
+        }
+      ]
+    },
+    "4205129691": {
+      "job_info": {
+        "job_title": "Account Executive - ProCraft Mechanical",
+        "company_name": "ProCraft Mechanical",
+        "job_location": "Broomfield, CO",
+        "job_seniority_level": "Mid-Senior level",
+        "job_function": "Sales and Business Development",
+        "job_industries": "Facilities Services",
+        "job_id": "4205129691"
+      },
+      "applicants": [
+        {
+          "profile_id": "322820632",
+          "similarity_score": 0.5621223449707031,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "275775461",
+          "similarity_score": 0.5291602611541748,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        }
+      ]
+    },
+    "4207593818": {
+      "job_info": {
+        "job_title": "Project -en implementatiemedewerker, Amsterdam",
+        "company_name": "Masters in Public",
+        "job_location": "Amsterdam, North Holland, Netherlands",
+        "job_seniority_level": "Mid-Senior level",
+        "job_function": "Other",
+        "job_industries": "Consumer Services, Environmental Services, and Consumer Services",
+        "job_id": "4207593818"
+      },
+      "applicants": [
+        {
+          "profile_id": "308746061",
+          "similarity_score": 0.5743082165718079,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "43999243",
+          "similarity_score": 0.5511723160743713,
+          "classification": "STRONG_MATCH",
+          "response_content": "Manual evaluation: STRONG_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "512529064",
+          "similarity_score": 0.5256273746490479,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "113703325",
+          "similarity_score": 0.5095288753509521,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        }
+      ]
+    },
+    "4208066499": {
+      "job_info": {
+        "job_title": "Senior Project Manager",
+        "company_name": "Open Systems Inc.",
+        "job_location": "Atlanta, GA",
+        "job_seniority_level": "Mid-Senior level",
+        "job_function": "Information Technology",
+        "job_industries": "Rail Transportation",
+        "job_id": "4208066499"
+      },
+      "applicants": [
+        {
+          "profile_id": "7138805",
+          "similarity_score": 0.6407922506332397,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "93973369",
+          "similarity_score": 0.6302063465118408,
+          "classification": "STRONG_MATCH",
+          "response_content": "Manual evaluation: STRONG_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "131350799",
+          "similarity_score": 0.6297320127487183,
+          "classification": "STRONG_MATCH",
+          "response_content": "Manual evaluation: STRONG_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "697561985",
+          "similarity_score": 0.6076245903968811,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "221743863",
+          "similarity_score": 0.6072765588760376,
+          "classification": "STRONG_MATCH",
+          "response_content": "Manual evaluation: STRONG_MATCH",
+          "think_content": ""
+        }
+      ]
+    },
+    "4208482507": {
+      "job_info": {
+        "job_title": "Lead Database Support",
+        "company_name": "Indotronix Avani Group",
+        "job_location": "Dallas, TX",
+        "job_seniority_level": "Mid-Senior level",
+        "job_function": "Business Development, Consulting, and Information Technology",
+        "job_industries": "Banking, Financial Services, and Insurance",
+        "job_id": "4208482507"
+      },
+      "applicants": [
+        {
+          "profile_id": "53383534",
+          "similarity_score": 0.6071314811706543,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        }
+      ]
+    },
+    "4208808434": {
+      "job_info": {
+        "job_title": "DevOps Cloud Architect, Digital Engineering Solutions (Remote)",
+        "company_name": "Lensa",
+        "job_location": "Wadsworth, OH",
+        "job_seniority_level": "Mid-Senior level",
+        "job_function": "Engineering and Information Technology",
+        "job_industries": "IT Services and IT Consulting",
+        "job_id": "4208808434"
+      },
+      "applicants": [
+        {
+          "profile_id": "44454760",
+          "similarity_score": 0.7038840055465698,
+          "classification": "POTENTIAL_MATCH",
+          "response_content": "Manual evaluation: POTENTIAL_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "572297546",
+          "similarity_score": 0.6872955560684204,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "294597161",
+          "similarity_score": 0.6251885890960693,
+          "classification": "POTENTIAL_MATCH",
+          "response_content": "Manual evaluation: POTENTIAL_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "84074846",
+          "similarity_score": 0.6209434866905212,
+          "classification": "STRONG_MATCH",
+          "response_content": "Manual evaluation: STRONG_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "520815335",
+          "similarity_score": 0.5922724604606628,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        }
+      ]
+    },
+    "4209665967": {
+      "job_info": {
+        "job_title": "Senior Projektleiter Digitale Transformation - 1999",
+        "company_name": "smiti AG - Personalvermittlung & Personalverleih",
+        "job_location": "Switzerland",
+        "job_seniority_level": "Mid-Senior level",
+        "job_function": "Information Technology",
+        "job_industries": "IT Services and IT Consulting",
+        "job_id": "4209665967"
+      },
+      "applicants": [
+        {
+          "profile_id": "354960532",
+          "similarity_score": 0.6594825983047485,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "221743863",
+          "similarity_score": 0.5980902910232544,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "10602648",
+          "similarity_score": 0.5922677516937256,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "35165176",
+          "similarity_score": 0.5520063042640686,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "355586663",
+          "similarity_score": 0.5486063957214355,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        }
+      ]
+    },
+    "4210059190": {
+      "job_info": {
+        "job_title": "Managing Consultant, Advisors & Consulting Services, Strategy & Transformation-R-246187",
+        "company_name": "Mastercard",
+        "job_location": "San Francisco, CA",
+        "job_seniority_level": "Mid-Senior level",
+        "job_function": "Consulting, Information Technology, and Sales",
+        "job_industries": "Financial Services, IT Services and IT Consulting, and Technology, Information and Internet",
+        "job_id": "4210059190"
+      },
+      "applicants": [
+        {
+          "profile_id": "30299468",
+          "similarity_score": 0.6194378137588501,
+          "classification": "POTENTIAL_MATCH",
+          "response_content": "Manual evaluation: POTENTIAL_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "86498233",
+          "similarity_score": 0.5760252475738525,
+          "classification": "POTENTIAL_MATCH",
+          "response_content": "Manual evaluation: POTENTIAL_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "47580528",
+          "similarity_score": 0.5725706815719604,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "302223965",
+          "similarity_score": 0.566222071647644,
+          "classification": "POTENTIAL_MATCH",
+          "response_content": "Manual evaluation: POTENTIAL_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "48746445",
+          "similarity_score": 0.5640286207199097,
+          "classification": "STRONG_MATCH",
+          "response_content": "Manual evaluation: STRONG_MATCH",
+          "think_content": ""
+        }
+      ]
+    },
+    "4210562100": {
+      "job_info": {
+        "job_title": "Tax Senior - REMOTE",
+        "company_name": "Jobot",
+        "job_location": "Seattle, WA",
+        "job_seniority_level": "Mid-Senior level",
+        "job_function": "Accounting/Auditing and Finance",
+        "job_industries": "Accounting, Financial Services, and Banking",
+        "job_id": "4210562100"
+      },
+      "applicants": [
+        {
+          "profile_id": "415650026",
+          "similarity_score": 0.5665227174758911,
+          "classification": "POTENTIAL_MATCH",
+          "response_content": "Manual evaluation: POTENTIAL_MATCH",
+          "think_content": ""
+        }
+      ]
+    },
+    "4210578765": {
+      "job_info": {
+        "job_title": "Video content creator (on marketing content)",
+        "company_name": "Camping TV",
+        "job_location": "Barcelona, Catalonia, Spain",
+        "job_seniority_level": "Mid-Senior level",
+        "job_function": "Marketing, Public Relations, and Writing/Editing",
+        "job_industries": "Media Production",
+        "job_id": "4210578765"
+      },
+      "applicants": [
+        {
+          "profile_id": "428786235",
+          "similarity_score": 0.524669349193573,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "324960708",
+          "similarity_score": 0.5352352857589722,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "176196052",
+          "similarity_score": 0.5641722083091736,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "66720604",
+          "similarity_score": 0.5273705720901489,
+          "classification": "NOT_MATCH",
+          "response_content": "Manual evaluation: NOT_MATCH",
+          "think_content": ""
+        },
+        {
+          "profile_id": "17933882",
+          "similarity_score": 0.5267276763916016,
+          "classification": "POTENTIAL_MATCH",
+          "response_content": "Manual evaluation: POTENTIAL_MATCH",
+          "think_content": ""
+        }
+      ]
+    }
+  }
+}

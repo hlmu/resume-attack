@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Job-Candidate Evaluation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .progress-bar {
+            background: #e0e0e0;
+            border-radius: 10px;
+            height: 20px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #4CAF50, #45a049);
+            height: 100%;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .job-card, .candidate-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .card-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        .job-info, .candidate-info {
+            margin-bottom: 15px;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #555;
+            display: inline-block;
+            min-width: 120px;
+        }
+        
+        .job-description {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+            max-height: 500px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        
+        .about-section {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #17a2b8;
+            margin: 15px 0;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 5px;
+        }
+        
+        .skill-tag {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            border: 1px solid #bbdefb;
+        }
+        
+        .experience-item {
+            background: #f8f9fa;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border-left: 3px solid #17a2b8;
+        }
+        
+        .evaluation-panel {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .evaluation-criteria {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .criteria-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        
+        .classification-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .classification-btn {
+            padding: 12px 24px;
+            border: 2px solid;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #fff;
+            font-size: 1em;
+        }
+        
+        .classification-btn.strong-match {
+            border-color: #28a745;
+            color: #28a745;
+        }
+        
+        .classification-btn.strong-match:hover,
+        .classification-btn.strong-match.selected {
+            background: #28a745;
+            color: white;
+        }
+        
+        .classification-btn.potential-match {
+            border-color: #ffc107;
+            color: #ffc107;
+        }
+        
+        .classification-btn.potential-match:hover,
+        .classification-btn.potential-match.selected {
+            background: #ffc107;
+            color: white;
+        }
+        
+        .classification-btn.not-match {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+        
+        .classification-btn.not-match:hover,
+        .classification-btn.not-match.selected {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .comments-section {
+            margin: 20px 0;
+        }
+        
+        .comments-textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: vertical;
+            font-family: inherit;
+        }
+        
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .nav-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        
+        .nav-btn.prev {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .nav-btn.next {
+            background: #007bff;
+            color: white;
+        }
+        
+        .nav-btn:hover {
+            opacity: 0.9;
+        }
+        
+        .nav-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .file-label {
+            padding: 10px 20px;
+            background: #17a2b8;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .file-label:hover {
+            background: #138496;
+        }
+        
+        .export-btn {
+            padding: 10px 20px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        
+        .export-btn:hover {
+            background: #218838;
+        }
+        
+        .clear-cache-btn {
+            padding: 10px 20px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        
+        .clear-cache-btn:hover {
+            background: #c82333;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        
+        .modal-buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .modal-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        
+        .modal-btn.confirm {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .modal-btn.confirm:hover {
+            background: #c82333;
+        }
+        
+        .modal-btn.cancel {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .modal-btn.cancel:hover {
+            background: #5a6268;
+        }
+        
+        .data-status {
+            background: #e7f3ff;
+            border: 1px solid #b3d7ff;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+        
+        .data-status.warning {
+            background: #fff3cd;
+            border-color: #ffeaa7;
+            color: #856404;
+        }
+        
+        .data-status.success {
+            background: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        
+        .status-info {
+            text-align: center;
+            margin: 15px 0;
+            color: #666;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .similarity-score {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1565c0;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .classification-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .classification-btn {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Manual Job-Candidate Evaluation</h1>
+            <p>Evaluate candidates based on job requirements and classify their match level</p>
+            <p><strong>⚠️ All three datasets required:</strong> Please load all three datasets below to start evaluation</p>
+            <div style="background: #fff3cd; border: 1px solid #ffeaa7; color: #856404; padding: 10px; border-radius: 5px; margin: 10px 0; font-size: 0.9em;">
+                <strong>📋 Instructions:</strong> Load all three datasets using the buttons below. Evaluation will start automatically once all are loaded.
+            </div>
+            
+            <div class="controls">
+                <input type="file" id="dataFile" class="file-input" accept=".json">
+                <label for="dataFile" class="file-label">Load Evaluation Data</label>
+                
+                <input type="file" id="jobsFile" class="file-input" accept=".json">
+                <label for="jobsFile" class="file-label">Load Jobs Data</label>
+                
+                <input type="file" id="profilesFile" class="file-input" accept=".json">
+                <label for="profilesFile" class="file-label">Load Profiles Data</label>
+                
+                <button id="exportBtn" class="export-btn" style="display: none;">Export Results</button>
+                <button id="clearCacheBtn" class="clear-cache-btn" style="display: none;">Clear Cache</button>
+            </div>
+            
+            <div id="dataStatus" class="data-status" style="display: none;"></div>
+            
+            <div class="status-info">
+                <span id="statusText">Please load evaluation data to begin</span>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <div id="evaluationContent" style="display: none;">
+            <div class="main-content">
+                <div class="job-card">
+                    <div class="card-title">Job Requirements</div>
+                    <div id="jobDetails"></div>
+                </div>
+                
+                <div class="candidate-card">
+                    <div class="card-title">Candidate Profile</div>
+                    <div id="candidateDetails"></div>
+                </div>
+            </div>
+
+            <div class="evaluation-panel">
+                <div class="evaluation-criteria">
+                    <div class="criteria-title">Evaluation Priorities (in order):</div>
+                    <ol>
+                        <li><strong>Skills and Experience Alignment:</strong> How well do the candidate's skills and past experience align with the core responsibilities and required qualifications?</li>
+                        <li><strong>Seniority and Experience Level:</strong> Does the candidate's seniority level and total years of relevant experience meet the job's requirements?</li>
+                        <li><strong>Industry and Function Relevance:</strong> Is the candidate's background in the specified industry and job function relevant?</li>
+                    </ol>
+                    <p><em>Consider education and location as secondary factors unless the job description explicitly states they are critical.</em></p>
+                </div>
+
+                <div class="card-title">Classification</div>
+                <div class="classification-buttons">
+                    <button class="classification-btn strong-match" data-classification="STRONG_MATCH">
+                        STRONG_MATCH
+                        <div style="font-size: 0.8em; margin-top: 5px;">Meets all key requirements and many preferred qualifications</div>
+                    </button>
+                    <button class="classification-btn potential-match" data-classification="POTENTIAL_MATCH">
+                        POTENTIAL_MATCH
+                        <div style="font-size: 0.8em; margin-top: 5px;">Meets most key requirements but lacks some preferred qualifications</div>
+                    </button>
+                    <button class="classification-btn not-match" data-classification="NOT_MATCH">
+                        NOT_MATCH
+                        <div style="font-size: 0.8em; margin-top: 5px;">Clearly lacks essential requirements for the role</div>
+                    </button>
+                </div>
+
+                <div class="comments-section">
+                    <label for="comments"><strong>Comments (optional):</strong></label>
+                    <textarea id="comments" class="comments-textarea" placeholder="Add any additional notes about your evaluation..."></textarea>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button id="prevBtn" class="nav-btn prev">← Previous</button>
+                    <div class="status-info">
+                        <span id="currentPosition"></span>
+                    </div>
+                    <button id="nextBtn" class="nav-btn next">Next →</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="loadingMessage" class="loading">
+            Please load evaluation data to begin...
+        </div>
+    </div>
+
+    <!-- Clear Cache Confirmation Modal -->
+    <div id="clearCacheModal" class="modal">
+        <div class="modal-content">
+            <h3>Clear Evaluation Cache?</h3>
+            <p>This will permanently delete all your saved evaluation progress and intermediate results.</p>
+            <p><strong>You will lose all classifications you've made so far.</strong></p>
+            <p>Are you sure you want to continue?</p>
+            <div class="modal-buttons">
+                <button id="confirmClearCache" class="modal-btn confirm">Yes, Clear Cache</button>
+                <button id="cancelClearCache" class="modal-btn cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class ManualEvaluator {
+            constructor() {
+                this.data = null;
+                this.jobsData = null;
+                this.profilesData = null;
+                this.currentJobIndex = 0;
+                this.currentCandidateIndex = 0;
+                this.results = {};
+                this.jobIds = [];
+                this.currentJobId = null;
+                this.currentCandidate = null;
+                this.totalEvaluations = 0;
+                this.completedEvaluations = 0;
+                this.loadingProgress = {
+                    evaluation: false,
+                    jobs: false,
+                    profiles: false
+                };
+                this.currentDatasetId = null; // Track which dataset is loaded
+                
+                this.initializeEventListeners();
+                const hasCachedProgress = this.loadSavedProgress();
+                
+                // Update UI if we have cached progress
+                if (hasCachedProgress) {
+                    this.updateStatusText();
+                    console.log('Page loaded with cached progress');
+                }
+            }
+
+            initializeEventListeners() {
+                document.getElementById('dataFile').addEventListener('change', (e) => this.loadData(e));
+                document.getElementById('jobsFile').addEventListener('change', (e) => this.loadJobsData(e));
+                document.getElementById('profilesFile').addEventListener('change', (e) => this.loadProfilesData(e));
+                document.getElementById('exportBtn').addEventListener('click', () => this.exportResults());
+                document.getElementById('clearCacheBtn').addEventListener('click', () => this.showClearCacheModal());
+                document.getElementById('prevBtn').addEventListener('click', () => this.previousEvaluation());
+                document.getElementById('nextBtn').addEventListener('click', () => this.nextEvaluation());
+                
+                // Clear cache modal listeners
+                document.getElementById('confirmClearCache').addEventListener('click', () => this.clearCache());
+                document.getElementById('cancelClearCache').addEventListener('click', () => this.hideClearCacheModal());
+                
+                // Close modal when clicking outside
+                document.getElementById('clearCacheModal').addEventListener('click', (e) => {
+                    if (e.target.id === 'clearCacheModal') {
+                        this.hideClearCacheModal();
+                    }
+                });
+                
+                // Initial classification button listeners
+                this.attachClassificationListeners();
+                
+                // Auto-save comments
+                const commentsField = document.getElementById('comments');
+                if (commentsField) {
+                    commentsField.addEventListener('input', () => this.saveCurrentEvaluation());
+                }
+            }
+
+            attachClassificationListeners() {
+                // Remove existing listeners first
+                document.querySelectorAll('.classification-btn').forEach(btn => {
+                    btn.replaceWith(btn.cloneNode(true));
+                });
+                
+                // Add fresh listeners
+                document.querySelectorAll('.classification-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const classification = e.target.dataset.classification || e.target.closest('.classification-btn').dataset.classification;
+                        if (classification) {
+                            this.selectClassification(classification);
+                        }
+                    });
+                });
+            }
+
+            loadJobsData(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        this.jobsData = JSON.parse(e.target.result);
+                        this.loadingProgress.jobs = true;
+                        console.log('Jobs data loaded:', this.jobsData.length, 'jobs');
+                        this.updateStatusText();
+                        this.updateDataStatus();
+                        
+                        // Try to initialize evaluation if all data is loaded
+                        if (this.data) {
+                            this.initializeEvaluation();
+                        }
+                    } catch (error) {
+                        this.showError('Error parsing jobs JSON file: ' + error.message);
+                    }
+                };
+                reader.readAsText(file);
+            }
+
+            loadProfilesData(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        this.profilesData = JSON.parse(e.target.result);
+                        this.loadingProgress.profiles = true;
+                        console.log('Profiles data loaded:', this.profilesData.length, 'profiles');
+                        this.updateStatusText();
+                        this.updateDataStatus();
+                        
+                        // Try to initialize evaluation if all data is loaded
+                        if (this.data) {
+                            this.initializeEvaluation();
+                        }
+                    } catch (error) {
+                        this.showError('Error parsing profiles JSON file: ' + error.message);
+                    }
+                };
+                reader.readAsText(file);
+            }
+
+
+            updateStatusText() {
+                let statusText = 'Please load evaluation data to begin';
+                
+                // Check if we have cached progress
+                if (this.completedEvaluations > 0 || this.totalEvaluations > 0) {
+                    const progressPercentage = this.totalEvaluations > 0 ? (this.completedEvaluations / this.totalEvaluations) * 100 : 0;
+                    statusText = `Progress: ${this.completedEvaluations}/${this.totalEvaluations} evaluations completed (${progressPercentage.toFixed(1)}%)`;
+                    
+                    if (this.data) {
+                        if (this.jobsData) statusText += ` | Jobs data: ${this.jobsData.length} jobs`;
+                        if (this.profilesData) statusText += ` | Profiles data: ${this.profilesData.length} profiles`;
+                    } else {
+                        statusText += ` | Cached data available - load all 3 datasets to continue`;
+                    }
+                } else if (this.data) {
+                    statusText = `Progress: ${this.completedEvaluations}/${this.totalEvaluations} evaluations completed`;
+                    if (this.jobsData) statusText += ` | Jobs data: ${this.jobsData.length} jobs`;
+                    if (this.profilesData) statusText += ` | Profiles data: ${this.profilesData.length} profiles`;
+                } else {
+                    // Show loading status
+                    const loadingCount = Object.values(this.loadingProgress).filter(v => v).length;
+                    if (loadingCount > 0) {
+                        statusText = `Loading datasets... (${loadingCount}/3 loaded)`;
+                    }
+                }
+                
+                document.getElementById('statusText').textContent = statusText;
+            }
+
+
+            loadData(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const newData = JSON.parse(e.target.result);
+                        const newDatasetId = this.generateDatasetId(newData);
+                        
+                        // Check if this is a different dataset
+                        if (this.currentDatasetId && this.currentDatasetId !== newDatasetId) {
+                            if (confirm('You are loading a different evaluation dataset. This will clear your current progress. Continue?')) {
+                                this.clearCache();
+                            } else {
+                                return;
+                            }
+                        }
+                        
+                        this.data = newData;
+                        this.currentDatasetId = newDatasetId;
+                        this.initializeEvaluation();
+                    } catch (error) {
+                        this.showError('Error parsing JSON file: ' + error.message);
+                    }
+                };
+                reader.readAsText(file);
+            }
+
+            generateDatasetId(data) {
+                // Generate a simple hash of the dataset to detect different datasets
+                const jobIds = Object.keys(data.matches || {});
+                const totalApplicants = jobIds.reduce((sum, jobId) => {
+                    const job = data.matches[jobId];
+                    return sum + (job.applicants ? job.applicants.length : 0);
+                }, 0);
+                return `${jobIds.length}_${totalApplicants}_${jobIds.join('').slice(0, 10)}`;
+            }
+
+            initializeEvaluation() {
+                if (!this.data || !this.data.matches) {
+                    this.showError('Invalid data format. Please load a valid job matching data file.');
+                    return;
+                }
+
+                // Always show data status and export/clear buttons when evaluation data is loaded
+                this.updateDataStatus();
+                document.getElementById('exportBtn').style.display = 'inline-block';
+                document.getElementById('clearCacheBtn').style.display = 'inline-block';
+
+                // Check if all required datasets are loaded
+                if (!this.data || !this.jobsData || !this.profilesData) {
+                    // Show loading message with requirements
+                    document.getElementById('loadingMessage').innerHTML = `
+                        <div style="padding: 20px; text-align: center;">
+                            <h3>⚠️ All datasets required for evaluation</h3>
+                            <p>Please load all three required datasets to start evaluation:</p>
+                            <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 15px 0; text-align: left;">
+                                <ol>
+                                    <li><strong>✅ Evaluation Data:</strong> ${this.data ? 'Loaded' : 'Not loaded'}</li>
+                                    <li><strong>${this.jobsData ? '✅' : '❌'} Jobs Data:</strong> ${this.jobsData ? 'Loaded' : 'Required - provides complete job descriptions'}</li>
+                                    <li><strong>${this.profilesData ? '✅' : '❌'} Profiles Data:</strong> ${this.profilesData ? 'Loaded' : 'Required - provides detailed candidate profiles'}</li>
+                                </ol>
+                            </div>
+                            <p><em>Evaluation will start automatically once all datasets are loaded.</em></p>
+                        </div>
+                    `;
+                    document.getElementById('loadingMessage').style.display = 'block';
+                    document.getElementById('evaluationContent').style.display = 'none';
+                    return;
+                }
+
+                this.jobIds = Object.keys(this.data.matches);
+                this.totalEvaluations = 0;
+                
+                // Count total evaluations needed
+                this.jobIds.forEach(jobId => {
+                    const job = this.data.matches[jobId];
+                    this.totalEvaluations += job.applicants ? job.applicants.length : 0;
+                });
+
+                // Initialize results structure if not loaded from cache
+                if (!this.results || !this.results.classifications) {
+                    this.initializeResults();
+                }
+                
+                // Show evaluation interface
+                document.getElementById('loadingMessage').style.display = 'none';
+                document.getElementById('evaluationContent').style.display = 'block';
+                
+                // Determine starting position
+                if (this.results && this.results.classifications) {
+                    // Jump to first unclassified item if we have cached results
+                    this.jumpToFirstUnclassified();
+                } else {
+                    // Start from beginning if no cache
+                    this.currentJobIndex = 0;
+                    this.currentCandidateIndex = 0;
+                }
+                
+                this.loadCurrentEvaluation();
+                this.updateProgress();
+                this.updateStatusText();
+            }
+
+            initializeResults() {
+                this.results = {
+                    summary: {
+                        total_jobs: this.jobIds.length,
+                        total_classifications: 0,
+                        match_distribution: {
+                            STRONG_MATCH: 0,
+                            POTENTIAL_MATCH: 0,
+                            NOT_MATCH: 0
+                        }
+                    },
+                    classifications: {}
+                };
+
+                // Initialize structure for each job
+                this.jobIds.forEach(jobId => {
+                    const job = this.data.matches[jobId];
+                    this.results.classifications[jobId] = {
+                        job_info: job.job_info,
+                        applicants: []
+                    };
+                });
+            }
+
+            loadCurrentEvaluation() {
+                if (this.currentJobIndex >= this.jobIds.length) {
+                    this.showCompletionMessage();
+                    return;
+                }
+
+                this.currentJobId = this.jobIds[this.currentJobIndex];
+                const currentJob = this.data.matches[this.currentJobId];
+                
+                if (!currentJob.applicants || this.currentCandidateIndex >= currentJob.applicants.length) {
+                    // Move to next job
+                    this.currentJobIndex++;
+                    this.currentCandidateIndex = 0;
+                    this.loadCurrentEvaluation();
+                    return;
+                }
+
+                this.currentCandidate = currentJob.applicants[this.currentCandidateIndex];
+                
+                this.displayJobDetails(currentJob);
+                this.displayCandidateDetails(this.currentCandidate);
+                
+                // Ensure UI is ready before loading saved evaluation
+                setTimeout(() => {
+                    this.attachClassificationListeners();
+                    this.loadSavedEvaluation();
+                    this.updateNavigationButtons();
+                    this.updatePositionDisplay();
+                }, 50);
+            }
+
+            displayJobDetails(job) {
+                const jobInfo = job.job_info;
+                let fullJobDetails = null;
+                
+                // Try to find full job details from the jobs dataset
+                if (this.jobsData) {
+                    fullJobDetails = this.jobsData.find(j => j.job_posting_id === jobInfo.job_id);
+                }
+                
+                // Extract job description
+                let jobDescription = 'N/A';
+                if (fullJobDetails && fullJobDetails.job_description_formatted) {
+                    // Use the HTML content directly (preserves formatting)
+                    jobDescription = fullJobDetails.job_description_formatted;
+                    
+                    // If it's too long, truncate but keep HTML formatting
+                    // if (jobDescription.length > 2000) {
+                    //     jobDescription = jobDescription.substring(0, 2000) + '...';
+                    //}
+                }
+                
+                const html = `
+                    <div class="job-info">
+                        <div><span class="info-label">Title:</span> ${jobInfo.job_title || 'N/A'}</div>
+                        <div><span class="info-label">Company:</span> ${jobInfo.company_name || 'N/A'}</div>
+                        <div><span class="info-label">Location:</span> ${jobInfo.job_location || 'N/A'}</div>
+                        <div><span class="info-label">Seniority:</span> ${jobInfo.job_seniority_level || 'N/A'}</div>
+                        <div><span class="info-label">Function:</span> ${jobInfo.job_function || 'N/A'}</div>
+                        <div><span class="info-label">Industries:</span> ${jobInfo.job_industries || 'N/A'}</div>
+                        ${fullJobDetails ? `<div><span class="info-label">Type:</span> ${fullJobDetails.job_employment_type || 'N/A'}</div>` : ''}
+                        ${fullJobDetails ? `<div><span class="info-label">Applicants:</span> ${fullJobDetails.job_num_applicants || 'N/A'}</div>` : ''}
+                    </div>
+                    <div class="job-description">
+                        <strong>Job Description:</strong><br>
+                        <div id="jobDescriptionContent" style="line-height: 1.4; margin-top: 10px;"></div>
+                    </div>
+                `;
+                document.getElementById('jobDetails').innerHTML = html;
+                
+                // Set job description content separately to preserve HTML formatting
+                document.getElementById('jobDescriptionContent').innerHTML = jobDescription;
+            }
+
+            displayCandidateDetails(candidate) {
+                const profile = candidate.profile;
+                const similarityScore = candidate.similarity_score;
+                let fullProfile = null;
+                
+                // Try to find full profile details from the profiles dataset
+                if (this.profilesData) {
+                    fullProfile = this.profilesData.find(p => 
+                        String(p.linkedin_num_id) === String(profile.linkedin_num_id)
+                    );
+                }
+                
+                // Extract skills
+                let allSkills = [...(profile.skills || [])];
+                if (fullProfile) {
+                    // Add skills from certifications
+                    if (fullProfile.certifications) {
+                        fullProfile.certifications.forEach(cert => {
+                            if (cert.title && !allSkills.includes(cert.title)) {
+                                allSkills.push(cert.title);
+                            }
+                        });
+                    }
+                }
+                
+                let skillsHtml = '';
+                if (allSkills.length > 0) {
+                    skillsHtml = `
+                        <div class="skills-list">
+                            ${allSkills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                        </div>
+                    `;
+                }
+
+                // Extract experience summary
+                let experienceHtml = 'N/A';
+                if (fullProfile && fullProfile.experience) {
+                    const experiences = fullProfile.experience.slice(0, 3); // Top 3 experiences
+                    experienceHtml = experiences.map(exp => {
+                        if (exp.positions && exp.positions.length > 0) {
+                            // Handle grouped experience with positions
+                            return exp.positions.map(pos => `
+                                <div class="experience-item">
+                                    <strong>${pos.title || 'N/A'} at ${exp.company || 'N/A'}</strong><br>
+                                    <em>${pos.duration || pos.meta || 'N/A'}</em><br>
+                                    ${pos.description ? (pos.description.substring(0, 200) + (pos.description.length > 200 ? '...' : '')).replace(/\n/g, '<br>') : 'No description'}
+                                </div>
+                            `).join('');
+                        } else {
+                            // Handle regular experience entry
+                            return `
+                                <div class="experience-item">
+                                    <strong>${exp.title || 'N/A'} at ${exp.company || 'N/A'}</strong><br>
+                                    <em>${exp.duration || 'N/A'}</em><br>
+                                    ${exp.description ? (exp.description.substring(0, 200) + (exp.description.length > 200 ? '...' : '')).replace(/\n/g, '<br>') : 'No description'}
+                                </div>
+                            `;
+                        }
+                    }).join('');
+                }
+
+                // Extract about section
+                let aboutSection = profile.about || (fullProfile ? fullProfile.about : '') || 'N/A';
+                // if (aboutSection.length > 500) {
+                //     aboutSection = aboutSection.substring(0, 500) + '...';
+                // }
+                // Convert newlines to HTML breaks
+                if (aboutSection !== 'N/A') {
+                    aboutSection = aboutSection.replace(/\n/g, '<br>');
+                }
+
+                // Get education
+                let education = profile.education || 'N/A';
+                if (fullProfile && fullProfile.education && education === 'N/A') {
+                    // Extract highest degree
+                    const degrees = fullProfile.education;
+                    let highestDegree = '';
+                    for (const edu of degrees) {
+                        if (edu.degree) {
+                            const degree = edu.degree.toLowerCase();
+                            if (degree.includes('phd') || degree.includes('doctorate')) {
+                                highestDegree = 'PhD';
+                                break;
+                            } else if (degree.includes('master') && highestDegree !== 'PhD') {
+                                highestDegree = "Master's";
+                            } else if ((degree.includes('bachelor') || degree.includes('bs') || degree.includes('ba')) && 
+                                     !highestDegree.includes('PhD') && !highestDegree.includes('Master')) {
+                                highestDegree = "Bachelor's";
+                            }
+                        }
+                    }
+                    education = highestDegree || 'N/A';
+                }
+
+                const html = `
+                    <div class="candidate-info">
+                        <div><span class="info-label">Name:</span> ${profile.name || 'N/A'}
+                            <span class="similarity-score">Similarity: ${(similarityScore * 100).toFixed(1)}%</span>
+                        </div>
+                        <div><span class="info-label">Position:</span> ${profile.position || (fullProfile ? fullProfile.position : 'N/A')}</div>
+                        <div><span class="info-label">Location:</span> ${fullProfile ? (fullProfile.city || 'N/A') : 'N/A'}</div>
+                        <div><span class="info-label">Education:</span> ${education}</div>
+                        ${fullProfile ? `<div><span class="info-label">Connections:</span> ${fullProfile.connections || 'N/A'}</div>` : ''}
+                        ${fullProfile ? `<div><span class="info-label">Followers:</span> ${fullProfile.followers || 'N/A'}</div>` : ''}
+                    </div>
+                    
+                    <div class="about-section">
+                        <strong>About:</strong><br>
+                        <div style="white-space: pre-line;">${aboutSection}</div>
+                    </div>
+                    
+                    <div style="margin: 15px 0;">
+                        <div><span class="info-label"><strong>Skills:</strong></span></div>
+                        ${skillsHtml || '<div style="color: #666;">No skills listed</div>'}
+                    </div>
+                    
+                    <div style="margin: 15px 0;">
+                        <div><span class="info-label"><strong>Experience Summary:</strong></span></div>
+                        ${experienceHtml}
+                    </div>
+                `;
+                document.getElementById('candidateDetails').innerHTML = html;
+            }
+
+            selectClassification(classification) {
+                // Defensive check with retry logic
+                const attemptSelection = (retryCount = 0) => {
+                    const allButtons = document.querySelectorAll('.classification-btn');
+                    const selectedBtn = document.querySelector(`[data-classification="${classification}"]`);
+                    
+                    if (allButtons.length === 0) {
+                        if (retryCount < 5) {
+                            console.warn(`Classification buttons not found, retrying... (${retryCount + 1}/5)`);
+                            setTimeout(() => attemptSelection(retryCount + 1), 100);
+                            return;
+                        } else {
+                            console.error('Classification buttons not found after multiple retries');
+                            return;
+                        }
+                    }
+                    
+                    if (!selectedBtn) {
+                        if (retryCount < 5) {
+                            console.warn(`Classification button not found for: ${classification}, retrying... (${retryCount + 1}/5)`);
+                            setTimeout(() => attemptSelection(retryCount + 1), 100);
+                            return;
+                        } else {
+                            console.error(`Classification button not found for: ${classification} after multiple retries`);
+                            return;
+                        }
+                    }
+                    
+                    // Update UI
+                    allButtons.forEach(btn => {
+                        btn.classList.remove('selected');
+                    });
+                    selectedBtn.classList.add('selected');
+                    
+                    // Save evaluation
+                    this.saveCurrentEvaluation();
+                    
+                    // Auto-advance after short delay
+                    setTimeout(() => {
+                        this.nextEvaluation();
+                    }, 500);
+                };
+                
+                attemptSelection();
+            }
+
+            saveCurrentEvaluation() {
+                const selectedClassification = document.querySelector('.classification-btn.selected');
+                if (!selectedClassification) return;
+
+                const classification = selectedClassification.dataset.classification;
+                const comments = document.getElementById('comments').value;
+                
+                const evaluationKey = `${this.currentJobId}_${this.currentCandidate.profile.linkedin_num_id}`;
+                
+                // Save to results
+                const existingApplicantIndex = this.results.classifications[this.currentJobId].applicants
+                    .findIndex(app => app.profile_id === this.currentCandidate.profile.linkedin_num_id);
+                
+                const applicantResult = {
+                    profile_id: this.currentCandidate.profile.linkedin_num_id,
+                    similarity_score: this.currentCandidate.similarity_score,
+                    classification: classification,
+                    response_content: comments || `Manual evaluation: ${classification}`,
+                    think_content: ""
+                };
+
+                if (existingApplicantIndex >= 0) {
+                    // Update existing
+                    const oldClassification = this.results.classifications[this.currentJobId].applicants[existingApplicantIndex].classification;
+                    this.results.classifications[this.currentJobId].applicants[existingApplicantIndex] = applicantResult;
+                    
+                    // Update summary if classification changed
+                    if (oldClassification !== classification) {
+                        this.results.summary.match_distribution[oldClassification]--;
+                        this.results.summary.match_distribution[classification]++;
+                    }
+                } else {
+                    // Add new
+                    this.results.classifications[this.currentJobId].applicants.push(applicantResult);
+                    this.results.summary.total_classifications++;
+                    this.results.summary.match_distribution[classification]++;
+                    this.completedEvaluations++;
+                }
+
+                // Save to localStorage
+                this.saveProgress();
+                this.updateProgress();
+            }
+
+            loadSavedEvaluation() {
+                if (!this.currentJobId || !this.currentCandidate) {
+                    return;
+                }
+                
+                const existingApplicant = this.results.classifications[this.currentJobId].applicants
+                    .find(app => app.profile_id === this.currentCandidate.profile.linkedin_num_id);
+                
+                // Clear previous selection with defensive check
+                const allButtons = document.querySelectorAll('.classification-btn');
+                allButtons.forEach(btn => {
+                    btn.classList.remove('selected');
+                });
+                
+                const commentsField = document.getElementById('comments');
+                if (commentsField) {
+                    commentsField.value = '';
+                }
+                
+                if (existingApplicant) {
+                    // Load saved evaluation with retry logic
+                    const loadSavedWithRetry = (retryCount = 0) => {
+                        const classificationBtn = document.querySelector(`[data-classification="${existingApplicant.classification}"]`);
+                        if (classificationBtn) {
+                            classificationBtn.classList.add('selected');
+                            
+                            // Load comments if it's not the default message
+                            if (existingApplicant.response_content && 
+                                !existingApplicant.response_content.startsWith('Manual evaluation:') &&
+                                commentsField) {
+                                commentsField.value = existingApplicant.response_content;
+                            }
+                        } else if (retryCount < 3) {
+                            console.warn(`Classification button not found for: ${existingApplicant.classification}, retrying... (${retryCount + 1}/3)`);
+                            setTimeout(() => loadSavedWithRetry(retryCount + 1), 100);
+                        } else {
+                            console.error(`Classification button not found for: ${existingApplicant.classification} after multiple retries`);
+                        }
+                    };
+                    
+                    loadSavedWithRetry();
+                }
+            }
+
+            nextEvaluation() {
+                this.currentCandidateIndex++;
+                this.loadCurrentEvaluation();
+            }
+
+            previousEvaluation() {
+                if (this.currentCandidateIndex > 0) {
+                    this.currentCandidateIndex--;
+                } else if (this.currentJobIndex > 0) {
+                    this.currentJobIndex--;
+                    const prevJob = this.data.matches[this.jobIds[this.currentJobIndex]];
+                    this.currentCandidateIndex = (prevJob.applicants ? prevJob.applicants.length - 1 : 0);
+                }
+                this.loadCurrentEvaluation();
+            }
+
+            updateNavigationButtons() {
+                const prevBtn = document.getElementById('prevBtn');
+                const nextBtn = document.getElementById('nextBtn');
+                
+                prevBtn.disabled = (this.currentJobIndex === 0 && this.currentCandidateIndex === 0);
+                
+                // Check if this is the last evaluation
+                const isLastJob = this.currentJobIndex === this.jobIds.length - 1;
+                const currentJob = this.data.matches[this.currentJobId];
+                const isLastCandidate = this.currentCandidateIndex === (currentJob.applicants ? currentJob.applicants.length - 1 : 0);
+                
+                nextBtn.style.display = (isLastJob && isLastCandidate) ? 'none' : 'inline-block';
+            }
+
+            updatePositionDisplay() {
+                let currentPosition = 0;
+                
+                // Count evaluations up to current position
+                for (let i = 0; i < this.currentJobIndex; i++) {
+                    const job = this.data.matches[this.jobIds[i]];
+                    currentPosition += job.applicants ? job.applicants.length : 0;
+                }
+                currentPosition += this.currentCandidateIndex + 1;
+                
+                document.getElementById('currentPosition').textContent = 
+                    `Evaluation ${currentPosition} of ${this.totalEvaluations}`;
+            }
+
+            updateProgress() {
+                const progressPercentage = (this.completedEvaluations / this.totalEvaluations) * 100;
+                document.getElementById('progressFill').style.width = `${progressPercentage}%`;
+                
+                document.getElementById('statusText').textContent = 
+                    `Progress: ${this.completedEvaluations}/${this.totalEvaluations} evaluations completed (${progressPercentage.toFixed(1)}%)`;
+            }
+
+            saveProgress() {
+                const progressData = {
+                    results: this.results,
+                    currentJobIndex: this.currentJobIndex,
+                    currentCandidateIndex: this.currentCandidateIndex,
+                    completedEvaluations: this.completedEvaluations,
+                    totalEvaluations: this.totalEvaluations,
+                    timestamp: new Date().toISOString()
+                };
+                
+                localStorage.setItem('manualEvaluationProgress', JSON.stringify(progressData));
+            }
+
+            loadSavedProgress() {
+                const saved = localStorage.getItem('manualEvaluationProgress');
+                if (saved) {
+                    try {
+                        const progressData = JSON.parse(saved);
+                        if (progressData.results) {
+                            this.results = progressData.results;
+                            this.currentJobIndex = progressData.currentJobIndex || 0;
+                            this.currentCandidateIndex = progressData.currentCandidateIndex || 0;
+                            this.completedEvaluations = progressData.completedEvaluations || 0;
+                            this.totalEvaluations = progressData.totalEvaluations || 0;
+                            
+                            // Show export and clear cache buttons if we have cached results
+                            document.getElementById('exportBtn').style.display = 'inline-block';
+                            document.getElementById('clearCacheBtn').style.display = 'inline-block';
+                            
+                            // Update progress display
+                            this.updateProgress();
+                            
+                            console.log('Loaded cached progress:', {
+                                completed: this.completedEvaluations,
+                                total: this.totalEvaluations,
+                                currentJob: this.currentJobIndex,
+                                currentCandidate: this.currentCandidateIndex
+                            });
+                            
+                            return true; // Indicate that cache was loaded
+                        }
+                    } catch (error) {
+                        console.warn('Could not load saved progress:', error);
+                    }
+                }
+                return false; // Indicate no cache was loaded
+            }
+
+            exportResults() {
+                if (!this.results || !this.results.summary || this.results.summary.total_classifications === 0) {
+                    alert('No evaluations to export. Please complete some evaluations first.');
+                    return;
+                }
+
+                const timestamp = new Date().toISOString().slice(0, 19).replace(/[:-]/g, '');
+                const filename = `job_candidate_classification_human_${timestamp}.json`;
+                
+                const dataStr = JSON.stringify(this.results, null, 2);
+                const dataBlob = new Blob([dataStr], { type: 'application/json' });
+                
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(dataBlob);
+                link.download = filename;
+                link.click();
+                
+                // Also save to localStorage as backup
+                this.saveProgress();
+                
+                console.log('Exported results with', this.results.summary.total_classifications, 'evaluations');
+            }
+
+            showCompletionMessage() {
+                document.getElementById('evaluationContent').innerHTML = `
+                    <div style="text-align: center; padding: 40px;">
+                        <h2>🎉 Evaluation Complete!</h2>
+                        <p>You have completed all ${this.totalEvaluations} evaluations.</p>
+                        <p>Click "Export Results" to download your evaluations.</p>
+                        <div style="margin-top: 20px;">
+                            <strong>Final Summary:</strong><br>
+                            STRONG_MATCH: ${this.results.summary.match_distribution.STRONG_MATCH}<br>
+                            POTENTIAL_MATCH: ${this.results.summary.match_distribution.POTENTIAL_MATCH}<br>
+                            NOT_MATCH: ${this.results.summary.match_distribution.NOT_MATCH}
+                        </div>
+                    </div>
+                `;
+            }
+
+            showError(message) {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error';
+                errorDiv.textContent = message;
+                document.querySelector('.header').appendChild(errorDiv);
+                
+                setTimeout(() => errorDiv.remove(), 5000);
+            }
+
+            // Cache Management Methods
+            showClearCacheModal() {
+                document.getElementById('clearCacheModal').style.display = 'block';
+            }
+
+            hideClearCacheModal() {
+                document.getElementById('clearCacheModal').style.display = 'none';
+            }
+
+            clearCache() {
+                // Clear localStorage
+                localStorage.removeItem('manualEvaluationProgress');
+                
+                // Reset all evaluation state
+                this.results = {};
+                this.currentJobIndex = 0;
+                this.currentCandidateIndex = 0;
+                this.completedEvaluations = 0;
+                
+                // Hide modal
+                this.hideClearCacheModal();
+                
+                // Reinitialize if data is loaded
+                if (this.data) {
+                    this.initializeEvaluation();
+                }
+                
+                alert('Cache cleared successfully! Your evaluation progress has been reset.');
+            }
+
+            jumpToFirstUnclassified() {
+                // Find the first unclassified item
+                for (let jobIndex = 0; jobIndex < this.jobIds.length; jobIndex++) {
+                    const jobId = this.jobIds[jobIndex];
+                    const job = this.data.matches[jobId];
+                    
+                    if (!job.applicants) continue;
+                    
+                    for (let candidateIndex = 0; candidateIndex < job.applicants.length; candidateIndex++) {
+                        const candidate = job.applicants[candidateIndex];
+                        const profileId = candidate.profile.linkedin_num_id;
+                        
+                        // Check if this candidate is already classified
+                        const isClassified = this.results.classifications[jobId].applicants
+                            .some(app => app.profile_id === profileId);
+                        
+                        if (!isClassified) {
+                            // Found first unclassified item
+                            this.currentJobIndex = jobIndex;
+                            this.currentCandidateIndex = candidateIndex;
+                            console.log(`Jumping to first unclassified item: Job ${jobIndex + 1}, Candidate ${candidateIndex + 1}`);
+                            return;
+                        }
+                    }
+                }
+                
+                // If all items are classified, go to the last item
+                if (this.jobIds.length > 0) {
+                    this.currentJobIndex = this.jobIds.length - 1;
+                    const lastJob = this.data.matches[this.jobIds[this.currentJobIndex]];
+                    this.currentCandidateIndex = Math.max(0, (lastJob.applicants ? lastJob.applicants.length - 1 : 0));
+                    console.log('All items classified, jumping to last item');
+                }
+            }
+
+            updateDataStatus() {
+                const statusDiv = document.getElementById('dataStatus');
+                let statusText = '';
+                let statusClass = 'data-status';
+                
+                if (this.data && this.jobsData && this.profilesData) {
+                    statusText = '✅ All required datasets loaded: Evaluation data, job descriptions, and candidate profiles - Ready to start evaluation!';
+                    statusClass += ' success';
+                } else {
+                    const missingData = [];
+                    if (!this.data) missingData.push('Evaluation Data');
+                    if (!this.jobsData) missingData.push('Jobs Data');
+                    if (!this.profilesData) missingData.push('Profiles Data');
+                    
+                    statusText = `❌ Missing required datasets: ${missingData.join(', ')}. Please load all three datasets to start evaluation.`;
+                    statusClass += ' warning';
+                }
+                
+                statusDiv.textContent = statusText;
+                statusDiv.className = statusClass;
+                statusDiv.style.display = 'block';
+            }
+        }
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', () => {
+            new ManualEvaluator();
+        });
+    </script>
+</body>
+</html>
