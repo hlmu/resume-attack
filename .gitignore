@@ -8,6 +8,16 @@ stdout/
 *.fdb_latexmk
 *.fls
 
+# Paper result directories shipped compressed as results/paper_results.tar.gz
+# (extract with scripts/extract_results.sh). The extracted trees are ignored so
+# they are never committed uncompressed.
+results/revision_multi_seed/
+results/revision_multi_seed_aligned/
+results/revision_multi_seed_aligned_closed/
+results/revision_experiments/
+results/revision_open_models/
+results/latex_tables/
+
 # C extensions
 *.so
 

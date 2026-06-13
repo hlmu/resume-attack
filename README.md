@@ -11,6 +11,10 @@
 
 <p align="center"><em>Figure: Adversarial Attack Framework (4987×5256)</em></p>
 
+ **Reproducing the paper**
+
+ See [`REPRODUCE.md`](REPRODUCE.md) for the end-to-end pipeline (data → inference → analysis) and a table mapping every paper table and figure to the script that produces it. The raw classification results behind the paper's numbers ship under `results/` (Git LFS), so the tables can be regenerated without rerunning inference.
+
  **Repository Layout**
 
  - `annotation/` – manual eval UI and helpers for merging/visualizing labels.
@@ -105,7 +109,25 @@
 
  Note: The `api_config.json` in this repo contains placeholder values. Replace locally and keep the file out of commits.
 
- **Results & Analysis**
+**Results & Analysis**
 
- - Candidate classification results are JSON under `results/` with consistent filename patterns for baseline/adversarial/defense runs.
- - Use your own notebooks or helpers in `eval/` for aggregation. Some analysis scripts expect CSV; adapt as needed.
+- Candidate classification results are JSON under `results/` with consistent filename patterns for baseline/adversarial/defense runs.
+- Aggregation and every paper table/figure are produced by the scripts in `eval/`; run `bash scripts/run_all_analysis.sh` to regenerate them all, or follow the per-table mapping in [`REPRODUCE.md`](REPRODUCE.md).
+
+**Data & License**
+
+- Code is released under the MIT License (`LICENSE`).
+- The LinkedIn-derived datasets and model outputs are for non-commercial research reproducibility only; see [`DATA.md`](DATA.md) for provenance, de-identification, and usage terms.
+
+**Citation**
+
+If you use this code or data, please cite (see `CITATION.cff`):
+
+```bibtex
+@article{mu2026resumeattack,
+  title   = {AI Security Beyond Core Domains: Resume Screening as a Case Study of Adversarial Vulnerabilities in Specialized LLM Applications},
+  author  = {Mu, Honglin and Liu, Jinghao and Wan, Kaiyang and Xing, Rui and Chen, Xiuying and Che, Wanxiang and Baldwin, Timothy},
+  journal = {Under review at the International Journal of Machine Learning and Cybernetics (IJMLC)},
+  year    = {2026}
+}
+```

@@ -1,3 +1,22 @@
+# Analysis stack (produces every table/figure from the raw result JSON files).
 pandas
+numpy
+scipy
 matplotlib
 seaborn
+scikit-learn
+openpyxl
+beautifulsoup4
+PyMuPDF          # imported as `fitz`, used by the parser-realism experiments
+tqdm
+openai           # OpenAI-compatible client for vLLM / API backends
+httpx
+
+# Inference / serving and fine-tuning are heavy and environment-specific; install
+# them only for the stages that need them (see REPRODUCE.md):
+#   vllm           # local open-weight serving
+#   transformers
+#   peft           # LoRA adapters at inference time
+#   accelerate
+# FIDS LoRA training uses the vendored LLaMA-Factory (LLaMA-Factory/requirements.txt),
+# which pins numpy<2.0 and should live in its OWN environment.
